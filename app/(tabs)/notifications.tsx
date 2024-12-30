@@ -1,13 +1,13 @@
 import React from 'react'
-import { Text } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { Text, View } from 'react-native'
+import Notification from '@/features/notification/notification'
 
-const Notifications = () => {
+const NotificationPage = () => {
   return (
-    <SafeAreaView>
-        <Text>Notifications</Text>
-    </SafeAreaView>
+    <View>
+        <Notification/>
+    </View>
   )
 }
 
-export default Notifications
+export default NotificationPage
