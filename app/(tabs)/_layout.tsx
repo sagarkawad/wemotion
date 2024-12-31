@@ -14,7 +14,8 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: Colors[colorScheme ?? 'light']?.tint,
+        tabBarInactiveTintColor: Colors[colorScheme ?? "light"]?.inactiveTint,
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
@@ -57,7 +58,7 @@ export default function TabLayout() {
         options={{
           title: '',
           tabBarIcon: ({ color }) => (
-            <View style={[styles.recordButton, { backgroundColor: Colors[colorScheme ?? 'light'].tint }]}>
+            <View style={[styles.recordButton, { backgroundColor: Colors[colorScheme ?? 'light']?.tint }]}>
               <Foundation name="record" size={36} color="white" />
             </View>
           ),
@@ -94,10 +95,12 @@ export default function TabLayout() {
 const styles = StyleSheet.create({
   tabBar: {
    height: 70,
+   backgroundColor: "#2c2c2c",
   },
   iconContainer: {
     alignItems: 'center',
     justifyContent: 'center',
+    bottom: -12,
   },
   recordButton: {
     width: 60,

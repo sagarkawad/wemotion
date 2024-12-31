@@ -93,7 +93,7 @@ const InstagramScroll: React.FC = () => {
 
 const styles = StyleSheet.create({
   userVideosContainer: { 
-    height: height-50,
+    height: height-70,
     justifyContent: 'center',
     alignItems: 'center',
   },
