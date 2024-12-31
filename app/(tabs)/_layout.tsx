@@ -1,9 +1,8 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, StyleSheet, View, Text } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
@@ -19,49 +18,93 @@ export default function TabLayout() {
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
+        tabBarStyle: [
+          styles.tabBar,
+          Platform.select({
+            ios: {
+              position: 'absolute',
+            },
+            default: {},
+          }),
+        ],
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <Entypo name="home" size={24} color="black" />,
+          title: '',
+          tabBarIcon: ({ color }) => (
+            <View style={styles.iconContainer}>
+              <Entypo name="home" size={30} color={color} />
+            </View>
+          ),
         }}
       />
       <Tabs.Screen
         name="explore"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="post" size={24} color="black" />,
+          title: '',
+          tabBarIcon: ({ color }) => (
+            <View style={styles.iconContainer}>
+              <MaterialCommunityIcons name="post" size={30} color={color} />
+             
+            </View>
+          ),
         }}
       />
-          <Tabs.Screen
+      <Tabs.Screen
         name="record"
         options={{
-          title: 'Record',
-          tabBarIcon: ({ color }) => <Foundation name="record" size={24} color="black" />,
+          title: '',
+          tabBarIcon: ({ color }) => (
+            <View style={[styles.recordButton, { backgroundColor: Colors[colorScheme ?? 'light'].tint }]}>
+              <Foundation name="record" size={36} color="white" />
+            </View>
+          ),
         }}
       />
       <Tabs.Screen
         name="notifications"
         options={{
-          title: 'Notifications',
-          tabBarIcon: ({ color }) => <Ionicons name="notifications" size={24} color="black" />,
+          title: '',
+          tabBarIcon: ({ color }) => (
+            <View style={styles.iconContainer}>
+              <Ionicons name="notifications" size={30} color={color} />
+              
+            </View>
+          ),
         }}
       />
-       <Tabs.Screen
+      <Tabs.Screen
         name="account"
         options={{
-          title: 'Account',
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="account" size={24} color="black" />,
+          title: '',
+          tabBarIcon: ({ color }) => (
+            <View style={styles.iconContainer}>
+              <MaterialCommunityIcons name="account" size={30} color={color} />
+              
+            </View>
+          ),
         }}
       />
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+  tabBar: {
+   height: 70,
+  },
+  iconContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  recordButton: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 30,
+  },
+});

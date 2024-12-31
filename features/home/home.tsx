@@ -1,36 +1,39 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, FlatList, StyleSheet, Dimensions, Text } from 'react-native';
 import { Video } from 'expo-av';  // Using the correct component from expo-av
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { getAllPosts } from '@/hooks/usePosts';
+import { VideoData } from '@/types/VideoData';
 
 const { width, height } = Dimensions.get('window');
 
-interface VideoData {
-  id: string;
-  user: string;
-  videos: string[]; // Array of video URLs for the user
+
+
+const mockData = async (): Promise<VideoData[]> => {
+    const videoData = await getAllPosts();
+    return videoData.map((el) => {
+    return {
+        id: el.id,
+        user: el.user,
+        videos: ["https://www.w3schools.com/html/mov_bbb.mp4"],
+      }
+})
 }
 
-const mockData: VideoData[] = [
-  {
-    id: '1',
-    user: 'User1',
-    videos: ['https://www.w3schools.com/html/mov_bbb.mp4', 'https://www.w3schools.com/html/movie.mp4'],
-  },
-  {
-    id: '2',
-    user: 'User2',
-    videos: ['https://www.w3schools.com/html/mov_bbb.mp4', 'https://www.w3schools.com/html/movie.mp4'],
-  },
-  {
-    id: '3',
-    user: 'User3',
-    videos: ['https://www.w3schools.com/html/mov_bbb.mp4', 'https://www.w3schools.com/html/movie.mp4'],
-  },
-];
 
 const InstagramScroll: React.FC = () => {
-  const [data, setData] = useState<VideoData[]>(mockData);
+  const [data, setData] = useState<VideoData[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const videoData = await mockData();
+      setData(videoData);
+      setLoading(false);
+    };
+
+    fetchData();
+  }, []);
 
   const loadMoreVideos = () => {
     const newVideoData: VideoData = {
@@ -64,6 +67,10 @@ const InstagramScroll: React.FC = () => {
     );
   }, []);
 
+  if (loading) {
+    return <Text>Loading...</Text>;
+  }
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <FlatList
@@ -85,8 +92,8 @@ const InstagramScroll: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  userVideosContainer: {
-    height,
+  userVideosContainer: { 
+    height: height-50,
     justifyContent: 'center',
     alignItems: 'center',
   },
