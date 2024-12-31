@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { router } from 'expo-router'
 
 function handleFocus() {
-    router.push("./../../(search)/search")
+    router.push("./../../(search)/searchpage")
 }
 
 const Explore = () => {

@@ -42,7 +42,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="explorepage"
         options={{
           title: '',
           tabBarIcon: ({ color }) => (
@@ -54,7 +54,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="record"
+        name="recordpage"
         options={{
           title: '',
           tabBarIcon: ({ color }) => (
@@ -65,7 +65,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="notifications"
+        name="notificationpage"
         options={{
           title: '',
           tabBarIcon: ({ color }) => (
@@ -77,7 +77,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="account"
+        name="accountpage"
         options={{
           title: '',
           tabBarIcon: ({ color }) => (

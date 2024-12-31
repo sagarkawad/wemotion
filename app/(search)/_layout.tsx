@@ -4,8 +4,8 @@ import { Stack } from 'expo-router';
 
 const Layout = () => {
   return (
-    <Stack>
-    <Stack.Screen name="search" options={{headerShown: false, headerTitle: "search"}}/>
+    <Stack >
+    <Stack.Screen name="searchpage" options={{headerShown: false}}/>
   </Stack>
   )
 }
