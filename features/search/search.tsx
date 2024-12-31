@@ -2,6 +2,9 @@ import React from 'react'
 import { View, TextInput, StyleSheet } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { AntDesign, Ionicons } from '@expo/vector-icons'
+import { goback } from '@/hooks/useNavigation'
+
+
 
 const Search = () => {
   return (
@@ -9,7 +12,7 @@ const Search = () => {
     <View>
 
     <View style={styles.backContainer}>
-    <Ionicons name="arrow-back" size={24} color="black" style={{width: 20}} />
+    <Ionicons name="arrow-back" size={24} color="black" style={{width: 20}} onPress={goback}/>
         <View style={styles.searchBar}>
         <AntDesign name="search1" size={24} color="black" style={{width: 30}}/>
         <TextInput  placeholder='Search for user'>
