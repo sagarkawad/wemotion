@@ -1,14 +1,17 @@
-import { FlatList, Text, View, StyleSheet, ScrollView} from 'react-native';
+import { FlatList, Text, View, StyleSheet, ScrollView, Image} from 'react-native';
 
 
 //const data = Array.from({ length: 32 }, (_, index) => `Item ${index + 1}`);
 
 const GridScreen = ({data}) => {
   const renderItem = ({ item }: {item: any}) => (
+    
     <View style={styles.gridItem}>
      
       <View style={styles.profileInfoContainer}>
-        <View style={styles.profileImg}></View>
+        <Image source={{ uri: item.thumbnail_url }} 
+        style={styles.profileInfoContainer}/>
+        <Image style={styles.profileImg} source={{ uri: item.picture_url }}></Image>
         <Text style={styles.profileText}>{item.username}</Text>
       </View>
     </View>
@@ -41,7 +44,7 @@ const styles = StyleSheet.create({
     height: 30,
     width: 30,
     backgroundColor: "red",
-    borderRadius: "50%",
+    borderRadius: 30,
     marginBottom: 6,
   },
   profileInfoContainer: {
