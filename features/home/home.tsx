@@ -15,7 +15,7 @@ const mockData = async (): Promise<VideoData[]> => {
     return {
         id: el.id,
         user: el.user,
-        videos: ["https://www.w3schools.com/html/mov_bbb.mp4"],
+        videos: ["https://www.w3schools.com/html/mov_bbb.mp4", "https://www.w3schools.com/html/movie.mp4"],
       }
 })
 }
