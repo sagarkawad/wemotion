@@ -2,9 +2,23 @@ import { Text, StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useState } from 'react'
 import SignInModal from '@/components/SignInModal'
+import { useEffect } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Notification = () => {
   const [userSignedIn, setUserSignedIn] = useState(false);
+
+  useEffect(() => {
+    const checkToken = async () => {
+      const token = await AsyncStorage.getItem('token');
+      if (token) {
+        setUserSignedIn(true);
+      }
+    };
+
+    checkToken();
+  }, []);
+
   return (
     <>
     <SafeAreaView style={styles.container}>

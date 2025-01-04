@@ -3,8 +3,10 @@ import SignInModal from '@/components/SignInModal'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useEffect } from 'react'
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView } from "react-native";
 import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
+import { AntDesign } from '@/assets/icons/icons';
+
 
 
 const Account = () => {
@@ -28,6 +30,9 @@ const Account = () => {
 
   return (
     <>
+    <View style={styles.topContainer}>
+    <AntDesign name="user" size={36} color="black" />
+    </View>
 
     {userSignedIn ?  <ScrollView style={styles.container}>
       <Text style={styles.header}>Settings</Text>
@@ -79,6 +84,14 @@ const Account = () => {
 }
 
 const styles = StyleSheet.create({
+    topContainer: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        position: "absolute",
+        height: "100%",
+        width: "100%",
+    },
    container: {
     flex: 1,
     backgroundColor: "white",
