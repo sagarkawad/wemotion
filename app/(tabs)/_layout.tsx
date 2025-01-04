@@ -94,7 +94,7 @@ export default function TabLayout() {
 
 const styles = StyleSheet.create({
   tabBar: {
-   height: 70,
+   height: "8%",
    backgroundColor: "#2c2c2c",
   },
   iconContainer: {

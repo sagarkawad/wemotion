@@ -72,7 +72,7 @@ const InstagramScroll: React.FC = () => {
   }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={{ flex: 1, height }}>
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}
@@ -93,7 +93,8 @@ const InstagramScroll: React.FC = () => {
 
 const styles = StyleSheet.create({
   userVideosContainer: { 
-    height: height-70,
+    height, 
+    width,
     justifyContent: 'center',
     alignItems: 'center',
   },
