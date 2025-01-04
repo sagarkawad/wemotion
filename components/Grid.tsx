@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1, 
+    maxWidth: 137,
     height: 200,
   },
   profileImg: {

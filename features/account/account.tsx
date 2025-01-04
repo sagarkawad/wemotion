@@ -3,12 +3,12 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { useState } from 'react'
 import SignInModal from '@/components/SignInModal'
 
-const Notification = () => {
+const Account = () => {
   const [userSignedIn, setUserSignedIn] = useState(false);
   return (
     <>
     <SafeAreaView style={styles.container}>
-      <Text>Your activity will appear here</Text>
+      <Text>Your account details will appear here</Text>
     </SafeAreaView>
     {userSignedIn ? null :  <SignInModal/>}
     </>
@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default Notification
+export default Account;
