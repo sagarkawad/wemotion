@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import axios from 'axios';
+import { PROD } from '@/constants/Links';
+import { router } from 'expo-router';
 
 export default function SignUp() {
   const [firstName, setFirstName] = useState('');
@@ -10,6 +13,28 @@ export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+
+  const handleSignUp = async () => {
+    const data = {
+      first_name: firstName,
+      last_name: lastName,
+      username: username,
+      password: password,
+      email: email,
+      device_identifier: "djej9e4332",
+      merge_account: false
+    };
+
+    try {
+      const response = await axios.post(`${PROD}/user/create`, data);
+      alert('Sign Up Successful!');
+      console.log(response.data);
+      router.push("./signin")
+    } catch (error) {
+      console.error('Error signing up:', error);
+      alert('Sign Up Failed!');
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -74,7 +99,7 @@ export default function SignUp() {
       </View>
 
       {/* Continue Button */}
-      <TouchableOpacity style={styles.continueButton} onPress={() => alert('Sign Up Successful!')}>
+      <TouchableOpacity style={styles.continueButton} onPress={handleSignUp}>
         <Text style={styles.buttonText}>Continue</Text>
       </TouchableOpacity>
     </View>

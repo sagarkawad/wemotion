@@ -4,6 +4,9 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import Account from '@/features/account/account'
 
 const AccountPage = () => {
+
+  
+
   return (
     <>
         <Account/>
