@@ -38,6 +38,7 @@ const SignInModal = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 30,
     
   },
   contentContainer: {
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     paddingHorizontal: 20,
     backgroundColor: '#6200ee', // Example color
-    width: 380,
+    width: 300,
     height: 60,
     display: "flex",
     alignItems: "center",
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderWidth: 2,
     borderColor: "gray",
-    width: 380,
+    width: 300,
     height: 60,
     display: "flex",
     alignItems: "center",

@@ -4,6 +4,7 @@ import { Video } from 'expo-av';  // Using the correct component from expo-av
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { getAllPosts } from '@/hooks/usePosts';
 import { VideoData } from '@/types/VideoData';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const { width, height } = Dimensions.get('window');
 
@@ -21,9 +22,11 @@ const mockData = async (): Promise<VideoData[]> => {
 }
 
 
+
 const InstagramScroll: React.FC = () => {
   const [data, setData] = useState<VideoData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,6 +48,7 @@ const InstagramScroll: React.FC = () => {
   };
 
   const renderHorizontalVideos = useCallback(({ item }: { item: VideoData }) => {
+
     return (
       <FlatList
         data={item.videos}
@@ -72,6 +76,7 @@ const InstagramScroll: React.FC = () => {
   }
 
   return (
+    <SafeAreaProvider>
     <GestureHandlerRootView style={{ flex: 1, height }}>
       <FlatList
         data={data}
@@ -88,12 +93,13 @@ const InstagramScroll: React.FC = () => {
         )}
       />
     </GestureHandlerRootView>
+    </SafeAreaProvider>
   );
 };
 
 const styles = StyleSheet.create({
-  userVideosContainer: { 
-    height, 
+  userVideosContainer: {
+    height,  
     width,
     justifyContent: 'center',
     alignItems: 'center',
