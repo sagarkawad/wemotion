@@ -4,6 +4,10 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 
 import { useColorScheme } from '@/hooks/useColorScheme';
